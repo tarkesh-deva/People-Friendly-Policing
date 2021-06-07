@@ -1,0 +1,40 @@
+<% include ../partials/header %>
+
+  <div class="container">
+    <div class="row">
+      <h1 class="text-center">Create a new entry</h1>
+      <section class="form-block">
+        <form id="new-campground-form" action="/campgrounds" method="POST" enctype="multipart/form-data">
+          <div class="form-group">
+            <label for="input-name">Owner Name</label>
+            <input id="input-name" class="form-control" type="text" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="input-location">Location</label>
+            <input id="input-location" class="form-control" type="text" name="location" required>
+          </div>
+          <div class="form-group">
+            <label for="input-imageLocal">Upload image file</label>
+            <input id="input-imageLocal" class="image-group" type="file" name="imageLocal" accept="image/*" required>
+          </div>
+          <!-- <div class="form-group">
+            <label for="input-imageExternal">or use external image url</label>
+            <input id="input-imageExternal" class="form-control image-group" type="text" name="imageExternal">
+          </div> -->
+          <div class="form-group">
+            <label for="input-cost">Contact Number</label>
+            <input id="input-cost" class="form-control" type="number" name="cost" min="0.00" step="0.01" required>
+          </div>
+          <div class="form-group">
+            <label for="input-description">Vehicle Number</label>
+            <textarea class="form-control" class="form-control" name="description" form="new-campground-form" rows="4" cols="70" required></textarea>
+          </div>
+          <button class="btn btn-success btn-lg btn-block">Submit</button>
+          <hr>
+          <a href="/campgrounds">Back to home</a>
+        </form>
+      </section>
+    </div>
+  </div>
+
+<% include ../partials/footer %>

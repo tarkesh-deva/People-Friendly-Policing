@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>People Friendly Policing</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="/stylesheets/main.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js" integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe" crossorigin="anonymous"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" integrity="sha256-0rguYS0qgS6L4qVzANq4kjxPLtvnp5nn2nB5G1lWRv4=" crossorigin="anonymous"></script>
+  </head>
+  <% if (isLanding) { %>
+  <body class="black-bg">
+  <% } else { %>
+  <body>
+  <% } %>
+    <% if (!isLanding) { %>
+      <header>
+        <nav class="navbar navbar-inverse">
+          <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#site-navbar" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="/">People Friendly Policing</a>
+            </div>
+            <div class="collapse navbar-collapse" id="site-navbar">
+              <ul class="nav navbar-nav">
+                <li class="<%= typeof currentPage !== 'undefined' && currentPage === 'campgrounds' ? 'active' : '' %>"><a href="/campgrounds">Home</a></li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                <% if (!currentUser) { %>
+                  <li class="<%= typeof currentPage !== 'undefined' && currentPage === 'login' ? 'active' : '' %>"><a href="/login">Sign in <i class="fas fa-user"></i></a></li>
+                  <li class="<%= typeof currentPage !== 'undefined' && currentPage === 'register' ? 'active' : '' %>"><a href="/register">Sign up <i class="fas fa-user-plus"></i></a></li>
+                <% } else { %>
+                  <li ><a href="#">Signed in as <strong><%= currentUser.username %></strong></a></li>
+                  <li><a href="/logout">Logout</a></li>
+                <% } %>
+              </ul>
+              <form action="/campgrounds" method="GET" class="navbar-form navbar-right">
+                <div class="input-group">
+                  <input type="text" name="search" class="form-control" placeholder="Search">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+                  </span>
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+      </header>
+      <div class="container flash-messages">
+        <% if (successMessages && successMessages.length > 0) { %>
+          <div class="alert alert-success" role="alert">
+            <%= successMessages %>
+            <a href="#" style="btn" class="pull-right">Close</a>
+          </div>
+        <% } %>
+        <% if (errorMessages && errorMessages.length > 0) { %>
+          <div class="alert alert-danger" role="alert">
+            <%= errorMessages %>
+            <a href="#" style="btn" class="pull-right">Close</a>
+          </div>
+        <% } %>
+      </div>
+      <main>
+    <% } %>
